@@ -31,6 +31,7 @@ msgpack==1.0.2
 pastel==0.2.1
 pkginfo==1.6.1
 poetry-core==1.0.0
+psycopg2==2.8.6
 pylev==1.3.0
 python-dateutil==2.8.1
 python-editor==1.0.4
