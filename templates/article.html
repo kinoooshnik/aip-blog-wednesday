@@ -9,6 +9,8 @@
         <h1>{{ article.title }}</h1>
         <p>{{ article.body }}</p>
         <p><small>{{ article.user.username }}, 5 минут назад</small></p>
-        <a href="{{ url_for("edit_article", article_id=article.id) }}">Редактировать</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for("edit_article", article_id=article.id) }}">Редактировать</a>
+        {% endif %}
     </article>
 {% endblock %}

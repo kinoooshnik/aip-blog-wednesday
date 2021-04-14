@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, TextAreaField, BooleanField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Email, EqualTo
 
 
 class ArticleForm(FlaskForm):
@@ -9,3 +9,16 @@ class ArticleForm(FlaskForm):
     is_verified = BooleanField('Is verified')
     submit = SubmitField('Create')
 
+
+class RegistrationForm(FlaskForm):
+    login = StringField('Login', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    password_repeat = PasswordField('Password repeat', validators=[DataRequired(), EqualTo("password")])
+    submit = SubmitField('Sign up')
+
+
+class LoginForm(FlaskForm):
+    login = StringField('Login', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Sign in')

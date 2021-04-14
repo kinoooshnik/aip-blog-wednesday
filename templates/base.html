@@ -26,9 +26,24 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for("new_article") }}">New article</a>
-                    </li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for("new_article") }}">New article</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for("logout") }}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active">Hi {{ current_user.username }}!</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for("login") }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for("registration") }}">Registration</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex" action="{{ url_for("search_article") }}">
                     <input class="form-control me-2" type="search" placeholder="Search" name="q">
