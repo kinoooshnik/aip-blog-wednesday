@@ -115,5 +115,10 @@ def logout():
     return redirect(url_for("homepage"))
 
 
+@app.errorhandler(400)
+def error_handler(error):
+    return render_template("error.html", error=error)
+
+
 if __name__ == '__main__':
     app.run()

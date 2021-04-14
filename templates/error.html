@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block content %}
+    <h1>Произошла какая-то ошибка</h1>
+    <p>{{ error }}</p>
+{% endblock %}
